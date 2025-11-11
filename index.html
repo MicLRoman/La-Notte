@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Notte - Ваш личный байер в Турции</title>
+    
+    <!-- Подключаем шрифты (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Подключаем иконки (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- НОВОЕ: Подключаем стили для Animate On Scroll (AOS) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- НОВОЕ: Подключаем наш файл со стилями -->
+    <link rel="stylesheet" href="static/style.css">
+
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <nav class="header__nav">
+                <!-- ИЗМЕНЕНО: Текст заменен на <img> -->
+                <a href="#hero" class="header__logo">
+                    <img src="static/logo.png" alt="La Notte Logo">
+                </a>
+                <ul class="header__menu">
+                    <li><a href="#how-it-works">Как это работает</a></li>
+                    <li><a href="#brands">Бренды</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Главный экран -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <!-- НОВОЕ: Анимации AOS (data-aos) -->
+                <h1 class="hero__title" data-aos="fade-up" data-aos-delay="100">Ваш личный байер в Турции</h1>
+                <p class="hero__subtitle" data-aos="fade-up" data-aos-delay="200">Оригинальные бренды, ушедшие из России</p>
+                <a href="#contact" class="btn" data-aos="fade-up" data-aos-delay="300">Сделать заказ</a>
+            </div>
+        </section>
+
+        <!-- О нас (Коротко что делаем) -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Что такое La Notte?</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+                    Мы ваш надежный посредник для покупок в Турции. Мы помогаем вам приобрести товары любимых брендов, которые ушли с российского рынка, и организуем быструю доставку прямо до вашей двери.
+                </p>
+            </div>
+        </section>
+
+        <!-- Схема работы -->
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Схема работы</h2>
+                <div class="how-it-works__grid">
+                    <!-- НОВОЕ: Анимации AOS с задержкой для каждого блока -->
+                    <div class="how-it-works__item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="item__number">1</div>
+                        <h3 class="item__title">Поиск товара</h3>
+                        <p>Вы присылаете нам ссылку или фото товара в любом интернет-магазине Турции.</p>
+                    </div>
+                    <div class="how-it-works__item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="item__number">2</div>
+                        <h3 class="item__title">Расчет и оплата</h3>
+                        <p>Мы присылаем вам полный расчет (стоимость товара + комиссия). Вы производите оплату.</p>
+                    </div>
+                    <div class="how-it-works__item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="item__number">3</div>
+                        <h3 class="item__title">Выкуп</h3>
+                        <p>Мы мгновенно выкупаем ваш товар и он прибывает на наш склад в Турции.</p>
+                    </div>
+                    <div class="how-it-works__item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="item__number">4</div>
+                        <h3 class="item__title">Доставка</h3>
+                        <p>Мы присылаем вам стоимость доставки CDEK до вашего города.</p>
+                    </div>
+                    <div class="how-it-works__item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="item__number">5</div>
+                        <h3 class="item__title">В пути</h3>
+                        <p>Товар проходит таможню и летит в ваш город в России.</p>
+                    </div>
+                    <div class="how-it-works__item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="item__number">6</div>
+                        <h3 class="item__title">Получение</h3>
+                        <p>Вы получаете свой заказ в пункте выдачи CDEK или у курьера.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Бренды -->
+        <section id="brands" class="brands">
+            <h2 class="section-title" data-aos="fade-up">Бренды, с которыми мы работаем</h2>
+            <div class="brands__marquee" data-aos="fade-in">
+                <div class="brands__list">
+                    <span>U.S. Polo Assn.</span>
+                    <span>Nike</span>
+                    <span>Puma</span>
+                    <span>Lacoste</span>
+                    <span>Tommy Hilfiger</span>
+                    <span>H&M</span>
+                    <span>Guess</span>
+                    <span>Bershka</span>
+                    <span>Boss</span>
+                    <!-- Дублируем для плавного цикла -->
+                    <span>U.S. Polo Assn.</span>
+                    <span>Nike</span>
+                    <span>Puma</span>
+                    <span>Lacoste</span>
+                    <span>Tommy Hilfiger</span>
+                    <span>H&M</span>
+                    <span>Guess</span>
+                    <span>Bershka</span>
+                    <span>Boss</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Преимущества -->
+        <section id="advantages" class="advantages">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Наши преимущества</h2>
+                <div class="advantages__grid">
+                    <div class="advantages__item" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Мгновенный выкуп</h3>
+                        <p>Оформляем заказ сразу после оплаты, чтобы успеть на все распродажи.</p>
+                    </div>
+                    <div class="advantages__item" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Бесплатное страхование</h3>
+                        <p>Все посылки застрахованы на полную стоимость на случай утери.</p>
+                    </div>
+                    <div class="advantages__item" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-percent"></i>
+                        <h3>Фиксированная комиссия</h3>
+                        <p>Вы всегда знаете, сколько платите. Никаких скрытых сборов.</p>
+                    </div>
+                    <div class="advantages__item" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-box-open"></i>
+                        <h3>Проверенная логистика</h3>
+                        <p>Работаем только с CDEK для надежной и быстрой доставки.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ответы на вопросы (FAQ) -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Часто задаваемые вопросы</h2>
+                <div class="faq__item" data-aos="fade-up" data-aos-delay="100">
+                    <button class="faq__question">
+                        <span>Какая у вас комиссия?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Наша комиссия составляет 10% от стоимости товара.</p>
+                    </div>
+                </div>
+                <div class="faq__item" data-aos="fade-up" data-aos-delay="150">
+                    <button class="faq__question">
+                        <span>Как быстро придет заказ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Доставка CDEK из Турции в Москву обычно занимает ~2 недели. В другие регионы срок может быть немного дольше. Мы предоставляем трек-номер для отслеживания.</p>
+                    </div>
+                </div>
+                <div class="faq__item" data-aos="fade-up" data-aos-delay="200">
+                    <button class="faq__question">
+                        <span>Это точно оригинальные товары?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Абсолютно. Мы выкупаем товары только с официальных магазинов брендов, зарегистрированных на Trendyol.</p>
+                    </div>
+                </div>
+                <div class="faq__item" data-aos="fade-up" data-aos-delay="250">
+                    <button class="faq__question">
+                        <span>Как происходит оплата?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Мы принимаем оплату переводом на российскую карту. Реквизиты высылаем при оформлении заказа.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты / CTA -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title" data-aos="fade-up">Готовы сделать заказ?</h2>
+                <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Напишите нам в Telegram или Instagram, и мы поможем найти то, что вы ищете!</p>
+                <!-- ИЗМЕНЕНО: Добавлена обертка для кнопок и сама кнопка Instagram -->
+                <div class="contact__buttons">
+                    <a href="https://t.me/NotteBuyer" target="_blank" class="btn btn-social" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fab fa-telegram-plane"></i> Связаться в Telegram
+                    </a>
+                    <a href="https://instagram.com/NotteBuyer" target="_blank" class="btn btn-social btn-social-instagram" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fab fa-instagram"></i> Связаться в Instagram
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 La Notte. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- НОВЫЙ ЭЛЕМЕНТ: Кнопка "Наверх" -->
+    <a href="#hero" class="scroll-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- НОВОЕ: Подключаем JavaScript для AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- НОВОЕ: Подключаем наш файл со скриптами (defer - для асинхронной загрузки) -->
+    <script src="static/script.js" defer></script>
+</body>
+</html>

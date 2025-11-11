@@ -1,0 +1,623 @@
+/* --- Глобальные переменные и стили --- */
+:root {
+    --burgundy: #630000; /* Насыщенный бордовый */
+    --black: #121212;     /* Глубокий черный */
+    --white: #FFFFFF;     /* Чистый белый */
+    --cream: #FAF9F6;     /* Кремовый / Слегка-серый */
+    --grey: #2a2a2a;      /* Темно-серый для карточек */
+    --text-primary: var(--white);
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--black);
+    color: var(--text-primary);
+    line-height: 1.6;
+    /* НОВОЕ: Скрываем горизонтальный скролл, который может вызвать AOS */
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section {
+    padding: 80px 0;
+    /* НОВОЕ: Добавляем для относительного позиционирования оверлеев */
+    position: relative;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    text-align: center;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--burgundy);
+    color: var(--white);
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--burgundy);
+}
+
+.btn:hover {
+    background-color: transparent;
+    border-color: var(--burgundy);
+    color: var(--burgundy);
+    transform: translateY(-3px);
+}
+
+/* НОВОЕ: Анимация пульсации для кнопки Hero */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.hero .btn {
+    animation: pulse 2s infinite ease-in-out;
+}
+
+
+/* --- Шапка --- */
+.header {
+    background-color: var(--black);
+    /* ИЗМЕНЕНО: Уменьшаем padding, чтобы логотип занимал больше места */
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header.scrolled {
+    background-color: var(--grey);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.header__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    /* НОВОЕ: Стили для логотипа-картинки */
+    line-height: 0; /* Убираем лишнюю высоту строки */
+}
+
+.header__logo img {
+    /* ИЗМENEHO: Увеличиваем высоту логотипа */
+    height: 50px; /* Раньше было 40px */
+    width: auto; /* Это сохранит пропорции, как вы и просили */
+    transition: transform 0.3s ease;
+}
+
+.header__logo:hover img {
+    transform: scale(1.05);
+}
+
+
+.header__menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.header__menu a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.header__menu a:hover {
+    color: var(--white);
+}
+
+/* --- Главный экран (Hero) --- */
+.hero {
+    background-color: var(--black);
+    
+    /* Путь к изображению 'first.jpg'.
+       Так как style.css лежит в /static, путь будет 'first.jpg'
+       (предполагая, что first.jpg лежит в static/)
+    */
+    background-image: url('first.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Создает эффект параллакса */
+    
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 80px; /* Отступ от шапки */
+    position: relative;
+    z-index: 1;
+}
+
+/* Оверлей для затемнения фона Hero */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: -1;
+}
+
+.hero__title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+
+.hero__subtitle {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+
+/* --- О нас --- */
+#about {
+    /* Секция "О нас" остается на сплошном черном фоне */
+    background-color: var(--black);
+}
+
+/* --- Схема работы --- */
+.how-it-works__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.how-it-works__item {
+    background-color: var(--grey);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.how-it-works__item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.item__number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    /* ИЗМЕНЕНО: Белый текст на бордовом фоне */
+    color: var(--white); 
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    background-color: var(--burgundy);
+    margin: 0 auto 20px auto;
+}
+
+.item__title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--white);
+}
+
+/* --- Бренды --- */
+.brands {
+    padding: 60px 0;
+    overflow: hidden; /* Важно для marquee */
+    z-index: 1;
+
+    /* ИЗМЕНЕНО: Возвращаем темный фон, но не черный, а серый */
+    background-color: var(--grey);
+}
+
+/* НОВОЕ: Отключаем оверлей для .brands, он больше не нужен */
+.brands::before {
+    display: none;
+}
+
+.brands .section-title {
+    /* ИЗМЕНЕНО: Возвращаем белый заголовок */
+    color: var(--white);
+}
+
+.brands__marquee {
+    width: 100%;
+    white-space: nowrap;
+}
+
+.brands__list {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee 30s linear infinite;
+}
+
+/* НОВОЕ: Пауза анимации при наведении */
+.brands__marquee:hover .brands__list {
+    animation-play-state: paused;
+}
+
+.brands__list span {
+    font-size: 2rem;
+    font-weight: 700;
+    /* ИЗМЕНЕНО: Возвращаем светлый текст тегов */
+    color: var(--white);
+    opacity: 0.8;
+    margin: 0 40px;
+    
+    /* ИЗМЕНЕНО: Стилизуем теги для темного фона */
+    background-color: #3a3a3a; /* Чуть светлее, чем var(--grey) */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 10px 25px;
+    border-radius: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+    
+.brands__marquee:hover .brands__list span {
+     opacity: 0.7; /* Делаем неактивные теги тусклее */
+}
+
+/* НОВОЕ: Hover-эффект для тегов брендов */
+.brands__marquee .brands__list span:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    background-color: var(--burgundy);
+    color: var(--white);
+    border-color: var(--burgundy);
+    box-shadow: 0 5px 15px rgba(99, 0, 0, 0.2);
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* --- Преимущества --- */
+.advantages {
+    background-color: var(--black);
+}
+
+.advantages__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.advantages__item {
+    text-align: center;
+    /* НОВОЕ: Добавляем анимацию для hover-эффекта */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* НОВОЕ: Hover-эффект для карточек преимуществ */
+.advantages__item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(99, 0, 0, 0.3); /* Бордовая тень */
+}
+
+
+.advantages__item i {
+    font-size: 2.5rem;
+    color: var(--burgundy);
+    margin-bottom: 20px;
+}
+
+/* НОВОЕ: Анимации для иконок "Преимущества" */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50% { transform: translateX(-3px) rotate(-5deg); }
+    20%, 40% { transform: translateX(3px) rotate(5deg); }
+}
+
+@keyframes pulse-shield {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes wobble {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-8deg); }
+    75% { transform: rotate(8deg); }
+}
+
+@keyframes bounce-box {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.advantages__item:nth-child(1) i {
+    animation: shake 5s infinite ease-in-out;
+}
+.advantages__item:nth-child(2) i {
+    animation: pulse-shield 3s infinite ease-in-out;
+}
+.advantages__item:nth-child(3) i {
+    animation: wobble 4s infinite ease-in-out;
+}
+.advantages__item:nth-child(4) i {
+    animation: bounce-box 2.5s infinite ease-in-out;
+}
+
+
+.advantages__item h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+/* --- FAQ --- */
+.faq {
+    /* Секция FAQ */
+}
+
+/* ИЗМЕНЯЕМ: Перераспределяем фоны для параллакс-эффекта */
+
+#how-it-works,
+.faq {
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Добавим параллакс */
+    z-index: 1;
+}
+
+/* НОВОЕ: Секция #how-it-works (Схема работы) получает second.jpg */
+#how-it-works {
+     background-image: url('second.jpg');
+}
+
+/* НОВОЕ: Секция .faq (Вопросы) получает third.jpg */
+.faq {
+     background-image: url('third.jpg');
+}
+
+
+/* НОВОЕ: Оверлей для затемнения фона этих секций */
+#how-it-works::before,
+.faq::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Сделаем оверлей чуть темнее */
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: -1;
+}
+
+.faq .container {
+    max-width: 800px;
+}
+
+.faq__item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+}
+
+.faq__question {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--white);
+    cursor: pointer;
+}
+
+.faq__question i {
+    transition: transform 0.3s ease;
+}
+
+.faq__answer {
+    max-height: 0;
+    overflow: hidden;
+    /* НОВОЕ: Улучшаем анимацию аккордеона */
+    transition: max-height 0.4s ease-out;
+}
+
+.faq__answer p {
+    padding: 0 0 20px 0;
+    color: var(--text-secondary);
+}
+
+.faq__item.active .faq__question i {
+    transform: rotate(180deg);
+}
+
+.faq__item.active .faq__answer {
+    max-height: 300px; /* Установить достаточное значение */
+}
+
+/* --- Контакты --- */
+.contact {
+    text-align: center;
+    background-color: var(--black);
+}
+
+.btn-social {
+    background-color: #2AABEE; /* Цвет Telegram */
+    border-color: #2AABEE;
+}
+
+.btn-social:hover {
+    background-color: transparent;
+    border-color: #2AABEE;
+    color: #2AABEE;
+}
+
+/* НОВОЕ: Стили для кнопки Instagram */
+.btn-social-instagram {
+    /* Градиент Instagram */
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    border-color: transparent;
+}
+
+.btn-social-instagram:hover {
+    background: transparent;
+    color: #e6683c; /* Один из цветов градиента */
+    border: 2px solid #e6683c;
+}
+
+.btn-social i {
+    margin-right: 10px;
+}
+
+/* НОВОЕ: Обертка для кнопок в .contact */
+.contact__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Для мобильных */
+}
+
+
+/* --- Подвал --- */
+.footer {
+    background-color: var(--grey);
+    text-align: center;
+    padding: 30px 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* НОВОЕ: Стили для кнопки "Наверх" */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--burgundy);
+    color: var(--white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    font-size: 1.2rem;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scroll-to-top:hover {
+    background-color: #8a0000; /* Чуть темнее при наведении */
+    transform: scale(1.05);
+}
+
+
+/* --- Адаптивность --- */
+@media (max-width: 992px) {
+    .how-it-works__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .advantages__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .header__menu {
+        display: none; /* Скрываем меню на мобилках (для простоты) */
+        /* Здесь можно добавить логику для бургер-меню */
+    }
+
+    .hero__title {
+        font-size: 2.5rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .how-it-works__grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .advantages__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    /* Адаптивность для тегов брендов */
+    .brands__list span {
+        font-size: 1.5rem;
+        padding: 8px 20px;
+        margin: 0 20px;
+    }
+
+    /* Адаптивность для кнопок контактов */
+    .contact__buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .contact__buttons .btn {
+        width: 90%;
+        max-width: 300px;
+    }
+}
