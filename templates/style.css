@@ -1,0 +1,418 @@
+/* --- Глобальные переменные и стили --- */
+:root {
+/* ... existing code ... */
+    --font-family: 'Montserrat', sans-serif;
+}
+
+* {
+/* ... existing code ... */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* ... existing code ... */
+html {
+    scroll-behavior: smooth;
+}
+/* ... existing code ... */
+body {
+    font-family: var(--font-family);
+/* ... existing code ... */
+    background-color: var(--black);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+/* ... existing code ... */
+.container {
+    max-width: 1100px;
+/* ... existing code ... */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+/* ... existing code ... */
+section {
+    padding: 80px 0;
+}
+/* ... existing code ... */
+.section-title {
+    font-size: 2.5rem;
+/* ... existing code ... */
+    font-weight: 700;
+    text-align: center;
+/* ... existing code ... */
+    margin-bottom: 20px;
+    color: var(--white);
+}
+/* ... existing code ... */
+.section-subtitle {
+    font-size: 1.1rem;
+/* ... existing code ... */
+    text-align: center;
+    color: var(--text-secondary);
+/* ... existing code ... */
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+}
+/* ... existing code ... */
+.btn {
+    display: inline-block;
+/* ... existing code ... */
+    background-color: var(--burgundy);
+    color: var(--white);
+/* ... existing code ... */
+    padding: 12px 30px;
+    border-radius: 50px;
+/* ... existing code ... */
+    text-decoration: none;
+    font-weight: 500;
+/* ... existing code ... */
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--burgundy);
+}
+/* ... existing code ... */
+.btn:hover {
+    background-color: transparent;
+/* ... existing code ... */
+    border-color: var(--burgundy);
+    color: var(--burgundy);
+    transform: translateY(-3px);
+}
+/* ... existing code ... */
+/* --- Шапка --- */
+.header {
+/* ... existing code ... */
+    background-color: var(--black);
+    padding: 20px 0;
+/* ... existing code ... */
+    position: fixed;
+    width: 100%;
+/* ... existing code ... */
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+/* ... existing code ... */
+.header.scrolled {
+    background-color: var(--grey);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+/* ... existing code ... */
+.header__nav {
+    display: flex;
+/* ... existing code ... */
+    justify-content: space-between;
+    align-items: center;
+}
+/* ... existing code ... */
+.header__logo {
+    font-size: 1.8rem;
+/* ... existing code ... */
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+}
+/* ... existing code ... */
+.header__menu {
+    display: flex;
+/* ... existing code ... */
+    list-style: none;
+    gap: 30px;
+}
+/* ... existing code ... */
+.header__menu a {
+    color: var(--text-secondary);
+/* ... existing code ... */
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+/* ... existing code ... */
+.header__menu a:hover {
+    color: var(--white);
+}
+/* ... existing code ... */
+/* --- Главный экран (Hero) --- */
+.hero {
+/* ... existing code ... */
+    background-color: var(--black);
+    /* Можно добавить фоновое изображение с низкой прозрачностью */
+/* ... existing code ... */
+    /* background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('your-image.jpg') no-repeat center center/cover; */
+    height: 100vh;
+    display: flex;
+/* ... existing code ... */
+    align-items: center;
+    justify-content: center;
+/* ... existing code ... */
+    text-align: center;
+    padding-top: 80px; /* Отступ от шапки */
+}
+/* ... existing code ... */
+.hero__title {
+    font-size: 3.5rem;
+/* ... existing code ... */
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 20px;
+}
+/* ... existing code ... */
+.hero__subtitle {
+    font-size: 1.3rem;
+/* ... existing code ... */
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+}
+/* ... existing code ... */
+/* --- О нас --- */
+#about {
+    background-color: var(--grey);
+}
+/* ... existing code ... */
+/* --- Схема работы --- */
+.how-it-works__grid {
+/* ... existing code ... */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+/* ... existing code ... */
+.how-it-works__item {
+    background-color: var(--grey);
+/* ... existing code ... */
+    padding: 30px;
+    border-radius: 10px;
+/* ... existing code ... */
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* ... existing code ... */
+.how-it-works__item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+/* ... existing code ... */
+.item__number {
+    font-size: 1.5rem;
+/* ... existing code ... */
+    font-weight: 700;
+    color: var(--burgundy);
+/* ... existing code ... */
+    width: 50px;
+    height: 50px;
+/* ... existing code ... */
+    line-height: 50px;
+    border-radius: 50%;
+/* ... existing code ... */
+    background-color: rgba(99, 0, 0, 0.1);
+    margin: 0 auto 20px auto;
+}
+/* ... existing code ... */
+.item__title {
+    font-size: 1.2rem;
+/* ... existing code ... */
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--white);
+}
+/* ... existing code ... */
+/* --- Бренды --- */
+.brands {
+/* ... existing code ... */
+    background-color: var(--cream);
+    color: var(--black);
+/* ... existing code ... */
+    padding: 60px 0;
+    overflow: hidden; /* Важно для marquee */
+}
+/* ... existing code ... */
+.brands .section-title {
+    color: var(--black);
+}
+/* ... existing code ... */
+.brands__marquee {
+    width: 100%;
+    white-space: nowrap;
+}
+/* ... existing code ... */
+.brands__list {
+    display: inline-block;
+/* ... existing code ... */
+    padding-left: 100%;
+    animation: marquee 30s linear infinite;
+}
+/* ... existing code ... */
+.brands__list span {
+    font-size: 2rem;
+/* ... existing code ... */
+    font-weight: 700;
+    color: var(--black);
+/* ... existing code ... */
+    opacity: 0.8;
+    margin: 0 40px;
+}
+/* ... existing code ... */
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+/* ... existing code ... */
+/* --- Преимущества --- */
+.advantages {
+    background-color: var(--black);
+}
+/* ... existing code ... */
+.advantages__grid {
+    display: grid;
+/* ... existing code ... */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+/* ... existing code ... */
+.advantages__item {
+    text-align: center;
+}
+/* ... existing code ... */
+.advantages__item i {
+    font-size: 2.5rem;
+/* ... existing code ... */
+    color: var(--burgundy);
+    margin-bottom: 20px;
+}
+/* ... existing code ... */
+.advantages__item h3 {
+    font-size: 1.2rem;
+/* ... existing code ... */
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+/* ... existing code ... */
+/* --- FAQ --- */
+.faq {
+    background-color: var(--grey);
+}
+/* ... existing code ... */
+.faq .container {
+    max-width: 800px;
+}
+/* ... existing code ... */
+.faq__item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 10px;
+}
+/* ... existing code ... */
+.faq__question {
+    background: none;
+/* ... existing code ... */
+    border: none;
+    width: 100%;
+/* ... existing code ... */
+    text-align: left;
+    display: flex;
+/* ... existing code ... */
+    justify-content: space-between;
+    align-items: center;
+/* ... existing code ... */
+    padding: 20px 0;
+    font-size: 1.2rem;
+/* ... existing code ... */
+    font-weight: 500;
+    color: var(--white);
+    cursor: pointer;
+}
+/* ... existing code ... */
+.faq__question i {
+    transition: transform 0.3s ease;
+}
+/* ... existing code ... */
+.faq__answer {
+    max-height: 0;
+/* ... existing code ... */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+/* ... existing code ... */
+.faq__answer p {
+    padding: 0 0 20px 0;
+    color: var(--text-secondary);
+}
+/* ... existing code ... */
+.faq__item.active .faq__question i {
+    transform: rotate(180deg);
+}
+/* ... existing code ... */
+.faq__item.active .faq__answer {
+    max-height: 300px; /* Установить достаточное значение */
+}
+/* ... existing code ... */
+/* --- Контакты --- */
+.contact {
+/* ... existing code ... */
+    text-align: center;
+    background-color: var(--black);
+}
+/* ... existing code ... */
+.btn-social {
+    background-color: #2AABEE; /* Цвет Telegram */
+    border-color: #2AABEE;
+}
+/* ... existing code ... */
+.btn-social:hover {
+    background-color: transparent;
+/* ... existing code ... */
+    border-color: #2AABEE;
+    color: #2AABEE;
+}
+/* ... existing code ... */
+.btn-social i {
+    margin-right: 10px;
+}
+/* ... existing code ... */
+/* --- Подвал --- */
+.footer {
+/* ... existing code ... */
+    background-color: var(--grey);
+    text-align: center;
+/* ... existing code ... */
+    padding: 30px 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+/* ... existing code ... */
+/* --- Адаптивность --- */
+@media (max-width: 992px) {
+/* ... existing code ... */
+    .how-it-works__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+/* ... existing code ... */
+    .advantages__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* ... existing code ... */
+@media (max-width: 768px) {
+    .header__menu {
+/* ... existing code ... */
+        display: none; /* Скрываем меню на мобилках (для простоты) */
+        /* Здесь можно добавить логику для бургер-меню */
+    }
+/* ... existing code ... */
+    .hero__title {
+        font-size: 2.5rem;
+    }
+/* ... existing code ... */
+    .hero__subtitle {
+        font-size: 1.1rem;
+    }
+/* ... existing code ... */
+    .how-it-works__grid {
+        grid-template-columns: 1fr;
+    }
+/* ... existing code ... */
+    .advantages__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}

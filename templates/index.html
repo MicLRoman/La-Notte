@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Notte - Ваш личный байер в Турции</title>
+    
+    <!-- Подключаем шрифты (Google Fonts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Подключаем иконки (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- 
+    --- НАЧАЛО: Стили CSS --- 
+    Раньше это был файл style.css
+    -->
+    <style>
+        /* --- Глобальные переменные и стили --- */
+        :root {
+            --burgundy: #630000; /* Насыщенный бордовый */
+            --black: #121212;     /* Глубокий черный */
+            --white: #FFFFFF;     /* Чистый белый */
+            --cream: #FAF9F6;     /* Кремовый / Слегка-серый */
+            --grey: #2a2a2a;      /* Темно-серый для карточек */
+            --text-primary: var(--white);
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --font-family: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--black);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            text-align: center;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 50px auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--burgundy);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--burgundy);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            border-color: var(--burgundy);
+            color: var(--burgundy);
+            transform: translateY(-3px);
+        }
+
+        /* --- Шапка --- */
+        .header {
+            background-color: var(--black);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .header.scrolled {
+            background-color: var(--grey);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .header__nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header__logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .header__menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .header__menu a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .header__menu a:hover {
+            color: var(--white);
+        }
+
+        /* --- Главный экран (Hero) --- */
+        .hero {
+            background-color: var(--black);
+            /* Можно добавить фоновое изображение с низкой прозрачностью */
+            /* background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('your-image.jpg') no-repeat center center/cover; */
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px; /* Отступ от шапки */
+        }
+
+        .hero__title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .hero__subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        /* --- О нас --- */
+        #about {
+            background-color: var(--grey);
+        }
+
+        /* --- Схема работы --- */
+        .how-it-works__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .how-it-works__item {
+            background-color: var(--grey);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .how-it-works__item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .item__number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--burgundy);
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            background-color: rgba(99, 0, 0, 0.1);
+            margin: 0 auto 20px auto;
+        }
+
+        .item__title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--white);
+        }
+
+        /* --- Бренды --- */
+        .brands {
+            background-color: var(--cream);
+            color: var(--black);
+            padding: 60px 0;
+            overflow: hidden; /* Важно для marquee */
+        }
+
+        .brands .section-title {
+            color: var(--black);
+        }
+
+        .brands__marquee {
+            width: 100%;
+            white-space: nowrap;
+        }
+
+        .brands__list {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 30s linear infinite;
+        }
+
+        .brands__list span {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--black);
+            opacity: 0.8;
+            margin: 0 40px;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* --- Преимущества --- */
+        .advantages {
+            background-color: var(--black);
+        }
+
+        .advantages__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .advantages__item {
+            text-align: center;
+        }
+
+        .advantages__item i {
+            font-size: 2.5rem;
+            color: var(--burgundy);
+            margin-bottom: 20px;
+        }
+
+        .advantages__item h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* --- FAQ --- */
+        .faq {
+            background-color: var(--grey);
+        }
+
+        .faq .container {
+            max-width: 800px;
+        }
+
+        .faq__item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .faq__question {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .faq__question i {
+            transition: transform 0.3s ease;
+        }
+
+        .faq__answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq__answer p {
+            padding: 0 0 20px 0;
+            color: var(--text-secondary);
+        }
+
+        .faq__item.active .faq__question i {
+            transform: rotate(180deg);
+        }
+
+        .faq__item.active .faq__answer {
+            max-height: 300px; /* Установить достаточное значение */
+        }
+
+        /* --- Контакты --- */
+        .contact {
+            text-align: center;
+            background-color: var(--black);
+        }
+
+        .btn-social {
+            background-color: #2AABEE; /* Цвет Telegram */
+            border-color: #2AABEE;
+        }
+
+        .btn-social:hover {
+            background-color: transparent;
+            border-color: #2AABEE;
+            color: #2AABEE;
+        }
+
+        .btn-social i {
+            margin-right: 10px;
+        }
+
+        /* --- Подвал --- */
+        .footer {
+            background-color: var(--grey);
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* --- Адаптивность --- */
+        @media (max-width: 992px) {
+            .how-it-works__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .advantages__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header__menu {
+                display: none; /* Скрываем меню на мобилках (для простоты) */
+                /* Здесь можно добавить логику для бургер-меню */
+            }
+
+            .hero__title {
+                font-size: 2.5rem;
+            }
+
+            .hero__subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .how-it-works__grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .advantages__grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+    <!-- --- КОНЕЦ: Стили CSS --- -->
+
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <nav class="header__nav">
+                <a href="#hero" class="header__logo">La Notte</a>
+                <ul class="header__menu">
+                    <li><a href="#how-it-works">Как это работает</a></li>
+                    <li><a href="#brands">Бренды</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Главный экран -->
+        <section id="hero" class="hero">
+            <div class="container">
+                <h1 class="hero__title">Ваш личный байер в Турции</h1>
+                <p class="hero__subtitle">Оригинальные бренды с доставкой CDEK</p>
+                <a href="#contact" class="btn">Сделать заказ</a>
+            </div>
+        </section>
+
+        <!-- О нас (Коротко что делаем) -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">Что такое La Notte?</h2>
+                <p class="section-subtitle">
+                    Мы ваш надежный посредник для покупок в Турции. Мы помогаем вам приобрести товары любимых брендов, которые ушли с российского рынка, и организуем быструю доставку прямо до вашей двери.
+                </p>
+            </div>
+        </section>
+
+        <!-- Схема работы -->
+        <section id="how-it-works" class="how-it-works">
+            <div class="container">
+                <h2 class="section-title">Схема работы</h2>
+                <div class="how-it-works__grid">
+                    <div class="how-it-works__item">
+                        <div class="item__number">1</div>
+                        <h3 class="item__title">Поиск товара</h3>
+                        <p>Вы присылаете нам ссылку или фото товара в любом интернет-магазине Турции.</p>
+                    </div>
+                    <div class="how-it-works__item">
+                        <div class="item__number">2</div>
+                        <h3 class="item__title">Расчет и оплата</h3>
+                        <p>Мы присылаем вам полный расчет (стоимость товара + комиссия). Вы производите оплату.</p>
+                    </div>
+                    <div class="how-it-works__item">
+                        <div class="item__number">3</div>
+                        <h3 class="item__title">Выкуп</h3>
+                        <p>Мы мгновенно выкупаем ваш товар и он прибывает на наш склад в Турции.</p>
+                    </div>
+                    <div class="how-it-works__item">
+                        <div class="item__number">4</div>
+                        <h3 class="item__title">Доставка</h3>
+                        <p>Мы присылаем вам стоимость доставки CDEK до вашего города.</p>
+                    </div>
+                    <div class="how-it-works__item">
+                        <div class="item__number">5</div>
+                        <h3 class="item__title">В пути</h3>
+                        <p>Товар проходит таможню и летит в ваш город в России.</p>
+                    </div>
+                    <div class="how-it-works__item">
+                        <div class="item__number">6</div>
+                        <h3 class="item__title">Получение</h3>
+                        <p>Вы получаете свой заказ в пункте выдачи CDEK или у курьера.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Бренды -->
+        <section id="brands" class="brands">
+            <h2 class="section-title">Бренды, с которыми мы работаем</h2>
+            <div class="brands__marquee">
+                <div class="brands__list">
+                    <span>U.S. Polo Assn.</span>
+                    <span>Nike</span>
+                    <span>Puma</span>
+                    <span>Lacoste</span>
+                    <span>Tommy Hilfiger</span>
+                    <span>H&M</span>
+                    <span>Guess</span>
+                    <span>Bershka</span>
+                    <span>Boss</span>
+                    <span>U.S. Polo Assn.</span>
+                    <span>Nike</span>
+                    <span>Puma</span>
+                    <span>Lacoste</span>
+                    <span>Tommy Hilfiger</span>
+                    <span>H&M</span>
+                    <span>Guess</span>
+                    <span>Bershka</span>
+                    <span>Boss</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Преимущества -->
+        <section id="advantages" class="advantages">
+            <div class="container">
+                <h2 class="section-title">Наши преимущества</h2>
+                <div class="advantages__grid">
+                    <div class="advantages__item">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Мгновенный выкуп</h3>
+                        <p>Оформляем заказ сразу после оплаты, чтобы успеть на все распродажи.</p>
+                    </div>
+                    <div class="advantages__item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Бесплатное страхование</h3>
+                        <p>Все посылки застрахованы на полную стоимость на случай утери.</p>
+                    </div>
+                    <div class="advantages__item">
+                        <i class="fas fa-percent"></i>
+                        <h3>Фиксированная комиссия</h3>
+                        <p>Вы всегда знаете, сколько платите. Никаких скрытых сборов.</p>
+                    </div>
+                    <div class="advantages__item">
+                        <i class="fas fa-box-open"></i>
+                        <h3>Проверенная логистика</h3>
+                        <p>Работаем только с CDEK для надежной и быстрой доставки.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ответы на вопросы (FAQ) -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2 class="section-title">Часто задаваемые вопросы</h2>
+                <div class="faq__item">
+                    <button class="faq__question">
+                        <span>Какая у вас комиссия?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Наша комиссия составляет 10% от стоимости товара, но не менее 1000 рублей. В эту сумму уже включены все расходы по выкупу и оформлению.</p>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question">
+                        <span>Как быстро придет заказ?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Доставка CDEK из Турции в Москву обычно занимает 7-10 дней. В другие регионы срок может быть немного дольше. Мы предоставляем трек-номер для отслеживания.</p>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question">
+                        <span>Это точно оригинальные товары?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Абсолютно. Мы выкупаем товары только с официальных сайтов брендов или у проверенных ритейлеров в Турции, таких как Boyner, Trendyol, и Hepsiburada.</p>
+                    </div>
+                </div>
+                <div class="faq__item">
+                    <button class="faq__question">
+                        <span>Как происходит оплата?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq__answer">
+                        <p>Мы принимаем оплату переводом на российскую карту. Реквизиты высылаем при оформлении заказа.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Контакты / CTA -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Готовы сделать заказ?</h2>
+                <p class="section-subtitle">Напишите нам в Telegram, и мы поможем найти то, что вы ищете!</p>
+                <a href="https://t.me/your_telegram_username" target="_blank" class="btn btn-social">
+                    <i class="fab fa-telegram-plane"></i> Связаться в Telegram
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 La Notte. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <!-- 
+    --- НАЧАЛО: JavaScript --- 
+    Раньше это был файл script.js
+    -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // --- Логика для FAQ-аккордеона ---
+            const faqItems = document.querySelectorAll('.faq__item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq__question');
+
+                question.addEventListener('click', () => {
+                    // Проверяем, активен ли уже этот элемент
+                    const isActive = item.classList.contains('active');
+
+                    // Сначала убираем класс 'active' у всех элементов
+                    faqItems.forEach(i => i.classList.remove('active'));
+
+                    // Если элемент не был активен, делаем его активным
+                    if (!isActive) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+
+            // --- Логика для "липкой" шапки ---
+            const header = document.querySelector('.header');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // --- Плавный скролл по якорям ---
+            const navLinks = document.querySelectorAll('.header__menu a, .hero .btn');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const href = this.getAttribute('href');
+                    
+                    // Проверяем, существует ли элемент, прежде чем скроллить
+                    if (href && href.startsWith('#')) {
+                        const targetElement = document.querySelector(href);
+                        
+                        if (targetElement) {
+                            const headerOffset = document.querySelector('.header').offsetHeight;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+
+        });
+    </script>
+    <!-- --- КОНЕЦ: JavaScript --- -->
+</body>
+</html>
